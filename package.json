@@ -1,0 +1,16 @@
+{
+  "name": "uaad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "uaad.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "lodash": "^4.17.15",
+    "puppeteer": "^2.0.0"
+  }
+}
