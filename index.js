@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // ɢ⃤
 const _ = require('lodash');
 const colors = require('colors');
