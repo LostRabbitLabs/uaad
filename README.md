@@ -4,14 +4,14 @@ This script will analyze a URL by loading all assets on the page with different 
 
 Useful for finding suspicous assets located on a URL.
 
-### Install Dependencies
+### Install
 ```sh
-$ npm install
+$ npm install -g uaad
 ```
 
 ### Usage
 ```sh
-$ node uaad.js <test url> <specific asset url>
+$ uaad <test url> <specific asset url>
 
 <test url> - URL of the main site/page you want to test. Ex: `https://www.billboard.com`
 <whitelist url> - If there is a specific asset on a webpage you want to run this on enter the URL. Ex: `https://www.google.com/recaptcha/api.js`
@@ -23,7 +23,7 @@ Real life example showing some bad assets that included on a 'good' site.
 Note the output shows the detected asset, the different user-agents that loaded those assets, along with the response size.
 
 ```sh
-$ node uaad.js hXXp://nsfwyoutube[.]com
+$ uaad hXXp://nsfwyoutube[.]com
 
 -------------------------------
 ⚠️ User-Agent Anomaly Detected: http://aptantasp.site/fWyB1y7INFwnUPH2z/17740
