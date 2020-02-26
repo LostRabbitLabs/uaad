@@ -1,13 +1,20 @@
 {
   "name": "uaad",
   "version": "1.0.0",
-  "description": "",
-  "main": "uaad.js",
+  "description": "User Agent Anomaly Detector",
+  "main": "index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "p0px",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/p0px/uaad.git"
+  },
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "colors": "^1.4.0",
     "lodash": "^4.17.15",
