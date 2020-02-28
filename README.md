@@ -11,10 +11,22 @@ $ npm install -g uaad
 
 ### Usage
 ```sh
-$ uaad <test url> <specific asset url>
+$ uaad -h
+usage: uaad [-h] [-v] [-c URL] [-o FILE] target
 
-<test url> - URL of the main site/page you want to test. Ex: `https://www.billboard.com`
-<whitelist url> - If there is a specific asset on a webpage you want to run this on enter the URL. Ex: `https://www.google.com/recaptcha/api.js`
+User Agent Anomaly Detector
+
+Positional arguments:
+  target                Url with protocol. Ex: https://domain.com
+
+Optional arguments:
+  -h, --help            Show this help message and exit.
+  -v, --version         Show program's version number and exit.
+  -c URL, --capture URL
+                        Catch only this asset on the target URL
+  -o FILE, --output FILE
+                        Output the JSON data structure to file instead of
+                        showing anonmaly information
 ```
 
 ### Example
