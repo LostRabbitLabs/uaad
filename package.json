@@ -17,6 +17,7 @@
   ],
   "bin": "index.js",
   "dependencies": {
+    "argparse": "^1.0.10",
     "colors": "^1.4.0",
     "lodash": "^4.17.15",
     "puppeteer": "^2.0.0"

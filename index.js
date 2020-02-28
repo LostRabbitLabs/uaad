@@ -3,7 +3,10 @@
 const _ = require('lodash');
 const colors = require('colors');
 const process = require('process');
+const argparse = require('argparse');
 const puppeteer = require('puppeteer');
+
+const package = require('./package.json')
 
 const userAgents = [
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/79.0.3945.0 Safari/537.36',
@@ -20,14 +23,27 @@ const userAgents = [
   'Wget/1.15 (linux-gnu)',
 ];
 
-const target = process.argv[2];
-const capture = process.argv[3];
+const ap = new argparse.ArgumentParser({
+  version: package.version,
+  addHelp: true,
+  description: package.description,
+});
+
+ap.addArgument('target', {
+  help: 'Url with protocol. Ex: https://domain.com'
+});
+ap.addArgument(['-c', '--capture'], {
+  help: 'Catch only this asset on the target URL',
+  defaultValue: false,
+});
+
+const args = ap.parseArgs();
 
 let whitelist = [
-    target,   // The main target always needs to be in the whitelist.
-    capture,
+    args.target,   // The main target always needs to be in the whitelist.
+    `${args.target}/`,  // Add ad extra / to the main target url
+    args.capture,
 ];
-
 
 /**
  * JSON Structure:
@@ -111,7 +127,7 @@ puppeteer.launch({
       });
 
       page.on('request', req => {
-        if (capture) {
+        if (args.capture) {
           if (whitelist.indexOf(req.url()) > -1) {
             return req.continue();
           }
@@ -124,7 +140,7 @@ puppeteer.launch({
 
       page.on('error', err => {});
 
-      await page.goto(target, {
+      await page.goto(args.target, {
         waitUntil: 'networkidle0'
       });
     }));
