@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // ɢ⃤
 const _ = require('lodash');
+const fs = require('fs');
 const colors = require('colors');
 const process = require('process');
 const argparse = require('argparse');
@@ -30,10 +31,16 @@ const ap = new argparse.ArgumentParser({
 });
 
 ap.addArgument('target', {
-  help: 'Url with protocol. Ex: https://domain.com'
+  help: 'Url with protocol. Ex: https://domain.com',
 });
 ap.addArgument(['-c', '--capture'], {
   help: 'Catch only this asset on the target URL',
+  metavar: 'URL',
+  defaultValue: false,
+});
+ap.addArgument(['-o', '--output'], {
+  help: 'Output the JSON data structure to file instead of showing anonmaly information',
+  metavar: 'FILE',
   defaultValue: false,
 });
 
@@ -64,6 +71,25 @@ let whitelist = [
  */
 const data = {};
 
+/**
+ * Outputs our data object into a stringified
+ * JSON file for further analysis.
+ *
+ * Used instead of running anomaly detection alg
+ *
+ * @param {Object} data data structure to write
+ */
+const outputJSON = (data) => {
+  fs.writeFileSync(args.output, JSON.stringify(data));
+  console.log(`${'⚠️'.yellow} JSON written to file: ${args.output.green}\n`);
+};
+
+/**
+ * detects anomalies from the above data
+ * structure.
+ *
+ * @param {Object} data The data structrue
+ */
 const detectAnomaly = (data) => {
   const zip = {};
   for (let ua in data) {
@@ -149,9 +175,9 @@ puppeteer.launch({
   await Promise.all(promises);
   await browser.close();
 
-  detectAnomaly(data);
+  args.output ? outputJSON(data) : detectAnomaly(data);
 
 }).catch(err => {
-  detectAnomaly(data);
+  args.output ? outputJSON(data) : detectAnomaly(data);
   process.exit();
 });
