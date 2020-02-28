@@ -5,7 +5,8 @@ const fs = require('fs');
 const colors = require('colors');
 const process = require('process');
 const argparse = require('argparse');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 const package = require('./package.json')
 
@@ -114,6 +115,7 @@ const detectAnomaly = (data) => {
   }
 }
 
+puppeteer.use(StealthPlugin());
 puppeteer.launch({
   args: [
     '--disable-gpu',
