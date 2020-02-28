@@ -1,6 +1,6 @@
 {
   "name": "uaad",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "User Agent Anomaly Detector",
   "main": "index",
   "scripts": {
