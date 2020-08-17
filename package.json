@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\""
   },
-  "author": "p0px",
+  "author": "Lost Rabbit Labs",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/p0px/uaad.git"
+    "url": "https://gitlab.com/lost-rabbit-labs/uaad"
   },
   "files": [
     "index.js"
