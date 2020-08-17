@@ -19,7 +19,7 @@
   "dependencies": {
     "argparse": "^1.0.10",
     "colors": "^1.4.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "puppeteer": "^2.1.1",
     "puppeteer-extra": "^3.1.9",
     "puppeteer-extra-plugin-stealth": "^2.4.9"
